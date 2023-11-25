@@ -1,0 +1,21 @@
+#tablaDiasTareados {
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    display: block; /* Agregado display: block; */
+  }
+  
+  .sticky-column {
+    position: sticky;
+    left: 0;
+    background-color: #fff;
+    z-index: 1;
+    box-shadow: inset -2px 0 0 #000; /* Ajusta el ancho y color del borde según tus necesidades */
+  }
+  
+  #tablaDiasTareados thead tr:nth-child(2){
+    position: sticky;
+    top: 0;
+    background-color: #A9A348;
+    z-index: 2;
+  }

@@ -1,0 +1,92 @@
+.cover-photo {
+    width: 100%;
+    height: 120px;
+    /*background-image: url('{{ asset('ruta-de-la-portada.jpg') }}');*/
+    background-size: cover;
+    background-position: center;
+}
+
+.profile-container {
+    position: absolute;
+    margin-top: -110px;
+    text-align: left;
+}
+
+.profile-picture {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    border: 10px solid #ffffff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-details {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.profile-cargo {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+}
+.container-buttons{
+  position: relative;
+  margin-top:30px; 
+}
+.container-box{
+  position: relative;
+  margin-top:90px; 
+}
+.badge {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+@media (max-width: 767px) {
+  .profile-container {
+    text-align: center;
+  }
+  .cover-photo {
+    width: 100%;
+    height: 80px;
+  }
+  .container-buttons{
+    position: relative;
+    margin-top:14%; 
+  }
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+  }
+  .profile-details {
+    margin-top: 5px;
+    margin-left: 0;
+    text-align: center;
+  }
+  .profile-name {
+      margin-top: 5px;
+  }
+  .profile-cargo {
+      margin-top: 0;
+  }
+  .profile-badge i {
+    padding-right: 5px; /* Ajusta el valor del padding según tus necesidades */
+  }
+  
+}
