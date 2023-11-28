@@ -1,5 +1,6 @@
 //PASAR URL A FRAME PARA VISTA DE PREBOLETA
 function setIframeSrc(url) {
+    console.log(url)
     const iframe = document.getElementById('pdfIframe');
     const emailInput = document.getElementById('email');
     const urlInput = document.getElementById('url');
@@ -27,33 +28,52 @@ document.querySelector('#formPreboleta').addEventListener('submit', function (ev
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
-    .then(function(data) {
-        if (data.success) {
-            // Mostrar alerta de éxito con un botón "Aceptar" y el ícono de un correo
-            Swal.fire({
-                icon: 'success',
-                title: 'Éxito',
-                text: '¡Correo enviado con éxito!',
-                confirmButtonText: 'Aceptar',
-                showClass: {
-                    popup: 'swal2-noanimation',
-                    backdrop: 'swal2-noanimation'
-                },
-                hideClass: {
-                    popup: '',
-                    backdrop: ''
-                }
-            }).then(function() {
-                // Recargar la página
-                location.reload();
-            });
-        } else {
-            // Mostrar alerta de error con un botón "Aceptar" y el ícono de un correo
+        .then(response => response.json())
+        .then(function (data) {
+            if (data.success) {
+                // Mostrar alerta de éxito con un botón "Aceptar" y el ícono de un correo
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: '¡Correo enviado con éxito!',
+                    confirmButtonText: 'Aceptar',
+                    showClass: {
+                        popup: 'swal2-noanimation',
+                        backdrop: 'swal2-noanimation'
+                    },
+                    hideClass: {
+                        popup: '',
+                        backdrop: ''
+                    }
+                }).then(function () {
+                    // Recargar la página
+                    location.reload();
+                });
+            } else {
+                // Mostrar alerta de error con un botón "Aceptar" y el ícono de un correo
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.error,
+                    confirmButtonText: 'Aceptar',
+                    showClass: {
+                        popup: 'swal2-noanimation',
+                        backdrop: 'swal2-noanimation'
+                    },
+                    hideClass: {
+                        popup: '',
+                        backdrop: ''
+                    }
+                });
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+            // Mostrar alerta de error si ocurre un error en la petición con un botón "Aceptar" y el ícono de un correo
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: data.error,
+                text: 'Ocurrió un problema al enviar la solicitud',
                 confirmButtonText: 'Aceptar',
                 showClass: {
                     popup: 'swal2-noanimation',
@@ -64,24 +84,5 @@ document.querySelector('#formPreboleta').addEventListener('submit', function (ev
                     backdrop: ''
                 }
             });
-        }
-    })
-    .catch(function(error) {
-        console.log(error); 
-        // Mostrar alerta de error si ocurre un error en la petición con un botón "Aceptar" y el ícono de un correo
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Ocurrió un problema al enviar la solicitud',
-            confirmButtonText: 'Aceptar',
-            showClass: {
-                popup: 'swal2-noanimation',
-                backdrop: 'swal2-noanimation'
-            },
-            hideClass: {
-                popup: '',
-                backdrop: ''
-            }
         });
-    });
 });

@@ -203,7 +203,7 @@
           </td>
           <td class="sticky-column" style="background-color: #FDFABE; font-weight: bolder;">
            {{-- Nombres --}}
-           <a href="#" data-toggle="modal" data-email="{{ $item->Email }}" data-mensaje="{{ $periodo->Mensaje }}" data-periodo="{{ $periodo->idPeriodo }}" data-target="#modalPreboleta" onclick="setIframeSrc('{{ url('preboleta/'.$periodo->idPeriodo.'/'.$item->idContrato.'/'.$item->idDatoContable)}}')">{{ strtoupper(explode(' ', $item->Nombres)[0]) }} {{ strtoupper($item->ApellidoPaterno) }}</a>
+           <a href="#" data-toggle="modal" data-email="{{ $item->Email }}" data-mensaje="{{ $periodo->Mensaje }}" data-periodo="{{ $periodo->idPeriodo }}" data-target="#modalPreboleta" onclick="setIframeSrc('{{ url('preboleta/'.$periodo->idPeriodo.'/'.$item->idContrato.'/'.$item->idDatosContables)}}')">{{ strtoupper(explode(' ', $item->Nombres)[0]) }} {{ strtoupper($item->ApellidoPaterno) }}</a>
           </td>
           <td class="text-center" style="background-color: #FDFABE; font-weight: bolder;">
             {{-- Sueldo --}}
@@ -211,7 +211,7 @@
                 $sueldo_base = null;
             @endphp
             @foreach ($datos_contables as $datos)
-                @if ($datos->idDatosContables == $item->idDatoContable)
+                @if ($datos->idDatosContables == $item->idDatosContables)
                     @php
                         $sueldo_base = $datos->SueldoBase;
                     @endphp
@@ -356,7 +356,7 @@
              {{-- Asignacion Familiar --}}
              @php
                 $asig_familiar = new \App\Http\Controllers\Planilla\PlanillaController();
-                $asignacion_familiar_value = $asig_familiar->AsignacionFamiliar($item->idDatoContable);
+                $asignacion_familiar_value = $asig_familiar->AsignacionFamiliar($item->idDatosContables);
                 echo 'S/'.$asignacion_familiar_value; 
                 $totalAsignacionFamiliar +=$asignacion_familiar_value;
               @endphp
@@ -435,7 +435,7 @@
             {{-- Adelantos --}}
             @php
                 $adelantos = new \App\Http\Controllers\Planilla\PlanillaController();
-                $adelantos_value = $adelantos->Adelantos($item->idDatoContable, $dia_inicio, $dia_fin);
+                $adelantos_value = $adelantos->Adelantos($item->idDatosContables, $dia_inicio, $dia_fin);
                 echo 'S/' . $adelantos_value;
                 $totalAdelantos += $adelantos_value;
             @endphp
@@ -444,7 +444,7 @@
             {{-- Prestamos --}}
             @php
                 $prestamos = new \App\Http\Controllers\Planilla\PlanillaController();
-                $prestamos_value = $prestamos->Prestamos($item->idDatoContable, $dia_inicio, $dia_fin);
+                $prestamos_value = $prestamos->Prestamos($item->idDatosContables, $dia_inicio, $dia_fin);
                 echo 'S/' . $prestamos_value;
             @endphp
         </td>
@@ -452,7 +452,7 @@
             {{-- Descuentos --}}
             @php
                 $otros_descuentos = new \App\Http\Controllers\Planilla\PlanillaController();
-                $otros_descuentos_value = $otros_descuentos->OtrosDescuentos($item->idDatoContable, $dia_inicio, $dia_fin);
+                $otros_descuentos_value = $otros_descuentos->OtrosDescuentos($item->idDatosContables, $dia_inicio, $dia_fin);
                 echo 'S/' . $otros_descuentos_value;
             @endphp
         </td>
@@ -463,7 +463,7 @@
             {{-- Pensión Alimenticia --}}
             @php
                 $pension_alimenticia = new \App\Http\Controllers\Planilla\PlanillaController();
-                $pension_alimenticia_value = $pension_alimenticia->PensionAlimenticia($item->idDatoContable, $remuneracion_asegurable);
+                $pension_alimenticia_value = $pension_alimenticia->PensionAlimenticia($item->idDatosContables, $remuneracion_asegurable);
                 echo 'S/' . $pension_alimenticia_value;
             @endphp
         </td>
